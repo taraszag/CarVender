@@ -1,0 +1,42 @@
+{% extends "car_app/base.html" %}
+{% load static %}
+{% block title %}
+    Sell Detail
+{% endblock %}
+
+{% block description %}
+    <!-- POSTS -->
+    <section id="car" class="blog wow fadeInUp" data-wow-delay="300ms">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-20">
+                        <div>
+                            <h3>{{ object.user }} {{ object.surname }}</h3>
+                            <h3>Contacts:</h3>
+                            <h5>Tlf: {{ object.telephone }}</h5>
+                            <h5>City: {{ object.city }}</h5>
+                            <div>
+                                {% if object.image %}
+                                    <img class="img-responsive" style="width: 300px; height: 300px;"
+                                         src="{{ object.image.url }}"
+                                         alt="{{ object.image }}">
+                                {% endif %}
+                            </div>
+
+                            <a class="btn btn-danger btn-lg"
+                               href="{% url 'car_app-user_posts' profile.user.username %}">All stands<i
+                                    class="fa fa-arrow-circle-o-right"></i>
+                            </a>
+                            <div> {% if post.Author.profile %}
+                                <p>Author: {{ post.Author.username }}</p>
+                            {% endif %}</div>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

@@ -1,0 +1,68 @@
+{% extends "car_app/base.html" %}
+{% load static %}
+{% block title %}
+    Detail Car
+{% endblock %}
+
+{% block description %}
+    <!-- POSTS -->
+    <section id="car" class="blog wow fadeInUp" data-wow-delay="300ms">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-20">
+                        <div>
+                            <p>
+                                {% if object.Author == user %}
+                                    <a href="{% url 'car_app-update' object.id %}">
+                                        <button>Update AD</button>
+                                    </a>
+                                    <a href="{% url 'car_app-delete' object.id %}">
+                                        <button>Delete AD</button>
+                                    </a>
+                                {% endif %}
+                            </p>
+                            <p>
+                                <a href="{% url 'car_app-user_posts' sellrequest.Author.username %}">
+                                    {% if object.Author.profile and object.Author.profile.image %}
+                                        <img style="width: 50px; height: 50px;"
+                                             src="{{ object.Author.profile.image.url }}"
+                                             alt="{{ object.Author.username }}">
+                                    {% endif %}
+                                    <span>{{ object.Author.username }}</span>
+                                </a>
+                            </p>
+
+
+                            <h3>{{ object.carmodelid }}</h3>
+                            <h5>{{ object.color }}</h5>
+                            <h5>{{ object.price }} euro</h5>
+                            <h5>{{ object.gearboxid }}</h5>
+                            <h5>{{ object.drivetypeid }}</h5>
+                            <h6>{{ object.fueltypeid }}</h6>
+                            <h6>{{ object.inginvolume }}</h6>
+                            <h6>{{ object.region }}</h6>
+                            <p>{{ object.carstateid }}</p>
+                            <div>
+                                {% if object.img1 %}
+                                    <img class="img-responsive" style="width: 300px; height: 200px;"
+                                         src="{{ object.img1.url }}"
+                                         alt="{{ object.img1 }}">
+                                {% endif %}
+                            </div>
+                            <a class="btn btn-danger btn-lg" href="{% url 'profile-detail' sellrequest.Author.pk %}">Bay<i
+                                    class="fa fa-arrow-circle-o-right"></i>
+                            </a>
+
+                            <div> {% if post.Author.profile %}
+                                <p>Author: {{ post.Author.username }}</p>
+                            {% endif %}</div>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

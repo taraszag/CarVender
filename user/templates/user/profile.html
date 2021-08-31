@@ -1,0 +1,22 @@
+{% extends "car_app/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block description %}
+    <div class="col-md-offset-1 col-md-10">
+        <img src="{{ user.profile.image.url }}" alt="{{ user.username }} profile pictures">
+        <h1>{{ user.username }}</h1>
+        <p>{{ user.email }}</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3>Profile content</h3>
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+            <button type="submit">Update profile</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "car_app/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    Register
+{% endblock %}
+
+{% block description %}
+    <!-- change the image in style.css to the class .number .container-fluid [approximately row 102] -->
+    <div class="col-md-offset-1 col-md-10">
+        <form method="POST">
+            {% csrf_token %}
+            <h3>Registration:</h3>
+            {{ form|crispy }}
+            <div>
+                <button class="btn btn-danger btn-lg" type='submit'>Sign Up<i
+                        class="fa fa-arrow-circle-o-right"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

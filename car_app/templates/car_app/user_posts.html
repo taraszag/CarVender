@@ -1,0 +1,63 @@
+{% extends "car_app/base.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block title %}
+    User sellers
+{% endblock %}
+
+{% block description %}
+    <div class="row">
+        <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-20">
+                <div>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div>{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+
+
+                    <h2>Sellers of user "{{ view.kwargs.username }}"</h2>
+                    {% for post in posts %}
+                        <div>
+                            <a href="{% url 'car_app-user_posts' post.Author.username %}">
+                                {% if post.Author.profile and post.img1 %}
+                                    <img style="width: 200px; height: 150px;"
+                                         src="{{ post.img1.url }}"
+                                         alt="{{ post.img1 }}">
+                                {% endif %}
+                                <span>{{ post.Author.username }}</span>
+                            </a>
+                            <h3><a href="{% url 'car_app-detail' post.id %}">{{ post.carmodelid }}</a></h3>
+                            <p>{{ post.TypeTour}}</p>
+                        </div>
+                    {% endfor %}
+
+                    {% if is_paginated %}
+
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">First</a>
+                            <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <a style="color: black" href="?page={{ num }}">{{ num }}</a>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <a href="?page={{ num }}">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                        {% endif %}
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

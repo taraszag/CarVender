@@ -1,0 +1,76 @@
+{% extends "car_app/base.html" %}
+{% load static %}
+{% block title %}
+    About us
+{% endblock %}
+
+{% block description %}
+    <!-- change the image in style.css to the class .number .container-fluid [approximately row 102] -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-16 opaline col-md-offset-0">
+                    <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                            <h3>Our Vision</h3>
+                            <h5>O seu Standvirtual de sempre foi redesenhado e melhorado! Conheça algumas das novidades
+                                que preparamos para potenciar ainda mais a venda do seu veículo.</h5>
+                            <p>No novo Standvirtual, o seu Saldo de Conta agora é em "Créditos" - após o carregamento de
+                                conta, o valor pago em euros (€) será convertido em Créditos, sendo que 1€ = 1 Cred;
+                                Login é feito com o e-email - No novo Standvirtual, o login no site será feito através
+                                do e-mail associado à sua conta ao invés do nome de utilizador;
+                                A Pesquisa foi redesenhada e melhorada - Mais parâmetros pesquisáveis e uma melhor
+                                experiência de pesquisa.
+                                A usabilidade do Site foi pensada para ser o mais "limpa" e profissional possivel -
+                                menos "ruído", maior foco nos anúncios e na geração de contactos;
+                                Conta Pessoal redesenhada;</p>
+                            <h3 id='contacts'>Our Offices</h3>
+                            <h5> Avenida liberdade, 345 Lisbon 1010-001, Portugal</h5>
+                            <p>+3511458579</p>
+                            <hr/>
+                            <h5>Kärntner Ring 1 304-306 Vienna 1010, Austria</h5>
+                            <p>+3125875585</p>
+
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <!-- set the numbers in assets/js/scripts.js  -->
+                        <div class="col-md-4 boxes col-xs-6 col-xs-offset-3 col-lg-4 col-lg-offset-1 col-md-offset-1 col-sm-6 wow fadeInUp">
+                            <h5>ALL Clients</h5>
+                            <h3 class="odometer 01">00000</h3>
+                        </div>
+                        <div class="col-md-4 boxes col-xs-6 col-xs-offset-3 col-lg-4 col-lg-offset-2 col-md-offset-2 col-sm-6 wow fadeInUp"
+                             data-wow-delay="300ms">
+                            <h5>ALL Sells</h5>
+                            <h3 class="odometer 02">00000</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="contact" class="prefooter wow fadeInUp" data-wow-delay="300ms">
+        <!-- change the image in style.css to the class .prefooter .container-fluid [approximately row 154] -->
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3>Maecenas sed diam eget risus varius<br> blandit sit amet non magna.</h3>
+                        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Cras mattis
+                            consectetur purus sit amet fermentum. Praesent commodo cursus magna, vel scelerisque nisl
+                            consectetur et. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="Your Email Here...">
+                                <br>
+                                <button type="button" class="btn btn-danger">Submit Newsletter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

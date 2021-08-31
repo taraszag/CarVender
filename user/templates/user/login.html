@@ -1,0 +1,22 @@
+{% extends "car_app/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+    Login
+{% endblock %}
+
+{% block description %}
+    <div class="col-md-offset-1 col-md-10">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h3>Welcome!</h3>
+            <p>Please login</p>
+            {{ form|crispy }}
+            <div>
+                <button  class="btn btn-danger btn-lg" type='submit'>Login<i
+                        class="fa fa-arrow-circle-o-right"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "car_app/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Home
+{% endblock %}
+
+{% block description %}
+    {% if messages %}
+        {% for message in messages %}
+            <div><h4>{{ message }}</h4></div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- filter -->
+    <div class="site-overlay"></div>
+    <section id="filter">
+        <div class="container">
+            <form method="GET">
+                {% csrf_token %}
+                {{ filter.form|crispy }}
+                <p>
+                    <button type="submit">Filtered posts</button>
+                </p>
+            </form>
+        </div>
+    </section>
+    <!-- POSTS -->
+    <section id="cars" class="blog wow fadeInUp" data-wow-delay="300ms">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="col-md-20">
+                        {% for p in posts %}
+                            <div>
+                                <h5>{{ p.carmodelid }}</h5>
+                                <p>{{ p.carbodyid }}</p>
+                                <p>{{ p.inginvolume }}</p>
+                                <p>{{ p.region }}</p>
+                                <p>{{ p.fueltypeid }}</p>
+                                <div>
+                                    {% if p.img1 %}
+                                        <img style="width: 250px; height: 150px;"
+                                             src="{{ p.img1.url }}"
+                                             alt="{{ p.img1 }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div>
+
+
+                            <a class="btn btn-danger btn-lg"
+                               href="{% url 'car_app-detail' p.id %}">Take
+                                a Look <i class="fa fa-arrow-circle-o-right"></i>
+                                </a>
+                                {% if p.Author.profile %}
+                                <p>Seller: {{ p.Author.username }}</p>
+                            {% endif %}</div>
+                                <hr/>
+                            </div>
+                        {% endfor %}
+                <!--pagination-->
+                {% if is_paginated %}
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">First</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+                            {% endif %}
+
+                            {% for num in page_obj.paginator.page_range %}
+                                {% if page_obj.number == num %}
+                                    <a style="color: black" href="?page={{ num }}">{{ num }}</a>
+                                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                    <a href="?page={{ num }}">{{ num }}</a>
+                                {% endif %}
+                            {% endfor %}
+
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                            {% endif %}
+
+                        {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}
+

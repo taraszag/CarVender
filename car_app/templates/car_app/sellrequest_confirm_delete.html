@@ -1,0 +1,13 @@
+{% extends "car_app/base.html" %}
+{% load crispy_forms_tags %}
+{% block description %}
+    <form method="POST">
+        {% csrf_token %}
+        <h3>Delete Sell.</h3>
+        <p>Are you sure you want to delete this post? "{{ object.id }}"</p>
+        <div>
+            <button type="submit">Yes, Delete</button>
+            <a href="{% url 'car_app-detail' object.id %}">Cancel</a>
+        </div>
+    </form>
+{% endblock %}
